@@ -1,0 +1,65 @@
+﻿@page
+@model IndexColorModel
+@{
+    ViewData["Title"] = "Home page";
+    string alertClass = (TempData["success"] != null || TempData["failure"] != null) ? "alert alert-success" : "";
+}
+
+<div class="container p-3">
+
+    <div>
+        <div class="col border-bottom">
+            <h2 class="display-6">My Colors List</h2>
+        </div>
+    </div>
+
+    <div class="container pt-4">
+        <div class="row">
+            <div class="col @alertClass">
+                @if (TempData["success"] != null)
+                {
+                    @TempData["success"]
+                }
+                @if (TempData["failure"] != null)
+                {
+                    @TempData["failure"]
+                }
+            </div>
+            <div class="col text-end pb-4">
+                <a asp-page="add" class="btn btn-primary mx-2 text-end" title="">
+                    <i class="bi bi-plus-square"></i> &nbsp;Add to list
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Fruit Name</th>
+                <th class="text-center">Manage</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+            @foreach (var obj in Model.ColorModels)
+            {
+                <tr>
+                    <td width="50%">@obj.Name</td>
+                    <td width="50%" class="text-center">
+                        <div class="w-75 btn-group btn-group-sm" role="group" style="text-align:center">
+                            <a asp-page="/Colors/Edit" asp-route-id="@obj.Id" class="btn btn-primary  mx-2">
+                                <i class="bi bi-pencil-square"></i> Edit
+                            </a>
+                             <a asp-page="/Colors/Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
+                                <i class="bi bi-trash"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>

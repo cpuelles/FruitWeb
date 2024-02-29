@@ -1,0 +1,22 @@
+﻿@page
+@model EditColorModel
+@{
+    ViewData["Title"] = "Update Fruit";
+}
+
+<form method="post">
+    <input hidden asp-for="ColorModel.Id" />
+ 	<div class="border col-md-6 p-3 mt-4">
+ 		<div class="row pb-2">
+ 			<h2 class="text-primary pl-3">Edit Fruit</h2>
+ 			<hr />
+ 		</div>
+ 		<div class="mb-3">
+ 			<label asp-for="ColorModel.Name" class="h5"></label><br/>
+ 			<input required type="text" asp-for="ColorModel.Name" class="mb-3" />
+ 			<span asp-validation-for="ColorModel.Name" class="text-danger"></span>
+ 		</div>
+ 		<button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+ 		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+ 	</div>
+ </form>

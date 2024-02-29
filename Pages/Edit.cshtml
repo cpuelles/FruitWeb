@@ -1,0 +1,33 @@
+﻿@page
+@model EditModel
+@{
+    ViewData["Title"] = "Update Fruit";
+}
+
+<form method="post">
+    <input hidden asp-for="FruitModel.Id" />
+ 	<div class="border col-md-6 p-3 mt-4">
+ 		<div class="row pb-2">
+ 			<h2 class="text-primary pl-3">Edit Fruit</h2>
+ 			<hr />
+ 		</div>
+ 		<div class="mb-3">
+ 			<label asp-for="FruitModel.Name" class="h5"></label><br/>
+ 			<input required class="form-control" type="text" asp-for="FruitModel.Name" />
+ 			<span asp-validation-for="FruitModel.Name" class="text-danger"></span>
+ 		</div>
+		<div class="mb-3">
+			<label asp-for="FruitModel.ColorId" class="h5">Color</label>
+			<select asp-for="FruitModel.ColorId" class="form-control" asp-items="Model.Options"></select>
+			<span asp-validation-for="FruitModel.ColorId" class="text-danger"></span>
+		</div>
+ 		<div class="mb-3">
+ 			<label asp-for="FruitModel.Instock" class="h5"></label><br/>
+ 			<input type="checkbox" asp-for="FruitModel.Instock" style="width:20px; height:20px" />
+ 			<label class="h7"><i class="bi bi-arrow-left"></i>  Check the box if available.</label>
+ 			<span asp-validation-for="FruitModel.Instock" class="text-danger"></span>
+ 		</div>
+ 		<button type="submit" class="btn btn-primary" style="width:150px;">Update</button>
+ 		<a asp-page="Index" class="btn btn-secondary" style="width:150px;">Cancel</a>
+ 	</div>
+ </form>
